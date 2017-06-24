@@ -4,7 +4,7 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,41 +12,37 @@ import {
   View
 } from 'react-native';
 
-export default class dgame_vs extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+import Languages from './src/components/Language';
+import Theme from './src/components/Theme';
+import Rule from './src/components/Rule';
+import Pictures from './src/components/Pictures';
+
+const dgame_vs = () => (
+  <View style={styles.container}>
+    <Languages look={styles.border}/>
+    <Theme look={styles.border}/>
+    <Rule look={styles.border}/>
+    <Pictures style={styles.pictures}/>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
+    flexDirection: 'column',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  border: {
+    flex: 1,
+    backgroundColor: '#F8F8F8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    elevation: 2,
+    position: 'relative'
   },
 });
 
