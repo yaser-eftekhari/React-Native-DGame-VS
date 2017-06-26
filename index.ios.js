@@ -16,12 +16,14 @@ import Languages from './src/components/Language';
 import Theme from './src/components/Theme';
 import Rule from './src/components/Rule';
 import Pictures from './src/components/Pictures';
+import Button from './src/components/Button';
 
 const dgame_vs = () => (
   <View style={styles.container}>
     <Languages look={styles.border}/>
     <Theme look={styles.border}/>
     <Rule look={styles.border}/>
+    <Button look={styles.border}/>
     <Pictures style={styles.pictures}/>
   </View>
 );
