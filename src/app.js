@@ -6,14 +6,14 @@ import {
 } from 'react-native';
 
 import Languages from './components/Language';
-import Theme from './components/Theme';
+import Value from './components/Value';
 import Rule from './components/Rule';
 import Pictures from './components/Pictures';
 
 const App = () => (
   <View style={styles.container}>
     <Languages look={styles.border}/>
-    <Theme look={styles.border}/>
+    <Value look={styles.border}/>
     <Rule look={styles.border}/>
     <Pictures style={styles.pictures}/>
   </View>

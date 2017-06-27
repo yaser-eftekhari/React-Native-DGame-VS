@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Theme = (props) => {
+const Value = (props) => {
   const { textStyle } = styles;
   return (
     <View style={props.look}>
-      <Text style={textStyle}> Theme </Text>
+      <Text style={textStyle}> Value </Text>
     </View>
   );
 };
@@ -16,4 +16,4 @@ const styles = {
   }
 };
 
-export default Theme;
+export default Value;
