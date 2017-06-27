@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import Button from './common/Button';
-
+import clapSoubd from '../sounds/clap.mp3';
+import booSoubd from '../sounds/boo.mp3';
 class Pictures extends Component {
   state = {companyValue: ''};
 
@@ -34,14 +35,14 @@ class Pictures extends Component {
 function getImageName(value, force) {
   var Sound = require('react-native-sound');
   Sound.setCategory('Playback');
-  var clap = new Sound('../sounds/clap.mp3', Sound.MAIN_BUNDLE, (error) => {
+  var clap = new Sound(clapSoubd, Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
     }
   });
 
-  var boo = new Sound('../sounds/boo.mp3', Sound.MAIN_BUNDLE, (error) => {
+  var boo = new Sound(booSoubd, Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
