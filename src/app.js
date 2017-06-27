@@ -31,12 +31,10 @@ class App  extends Component {
   }
 
   parentCallback = (data) => {
-    console.log("before app state: " + this.state.companyValue);
-    console.log("received data: " + data);
-    this.setState({
+    this.state = {
       companyValue: data
-    });
-    console.log("after app state: " + this.state.companyValue);
+    };
+    this.forceUpdate();
   }
 }
 

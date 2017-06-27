@@ -14,14 +14,14 @@ class Pictures extends Component {
     };
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     companyValue: nextProps.companyValue,
-  //   });
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      companyValue: nextProps.companyValue,
+    });
+  }
 
   render() {
-    console.log("inside render in Pictures, state is " + this.state.companyValue);
+    console.log("inside render in Pictures, state is " + this.props.companyValue);
     return (
       <View style={styles.border}>
         {getImageName(this.state.companyValue, true)}
