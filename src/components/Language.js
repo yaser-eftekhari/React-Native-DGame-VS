@@ -7,7 +7,7 @@ const Language = (props) => {
   return (
     <View style={styles.border}>
       <View style={styles.langContainer}>
-        <Text style={textStyle}> Languages </Text>
+        <Text style={styles.textStyle2}> Languages </Text>
       </View>
       <View style={styles.buttonContainer}>
         <Button style={{backgroundColor: 'powderblue'}}>
@@ -29,20 +29,21 @@ const styles = {
     fontSize: 12,
     alignSelf: 'center'
   },
+  textStyle2: {
+    fontSize: 15,
+    alignSelf: 'center'
+  },
   langContainer: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#F8F8F8',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
     elevation: 2,
     position: 'relative',
     flexDirection: 'column',
     justifyContent: 'center'
   },
   buttonContainer:{
-    flex: 1,
+    flex: 5,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center'
