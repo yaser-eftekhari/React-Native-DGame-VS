@@ -32,6 +32,21 @@ class Pictures extends Component {
 }
 
 function getImageName(value, force) {
+  var Sound = require('react-native-sound');
+  Sound.setCategory('Playback');
+  var clap = new Sound('../sounds/clap.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log('failed to load the sound', error);
+      return;
+    }
+  });
+
+  var boo = new Sound('../sounds/boo.mp3', Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+      console.log('failed to load the sound', error);
+      return;
+    }
+  });
   console.log("getImageName accessed " + value);
   const { imageStyle, picContainer } = styles;
   if(force) {
@@ -42,13 +57,13 @@ function getImageName(value, force) {
 
   if(previousSelection == 0) {
     return (
-      <Button onPress={() => console.log(correctSelection)} style={picContainer}>
+      <Button onPress={() => clap.play()} style={picContainer}>
         <Image style={imageStyle} source={Images[value].true}/>
       </Button>
     );
   } else {
     return (
-      <Button onPress={() => console.log(wrongSelection)} style={picContainer}>
+      <Button onPress={() => boo.play()} style={picContainer}>
         <Image style={imageStyle} source={Images[value].false}/>
       </Button>
     );
