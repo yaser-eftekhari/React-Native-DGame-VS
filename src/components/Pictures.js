@@ -1,16 +1,17 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, View } from 'react-native';
+import Button from './common/Button';
 
 const Pictures = () => {
   const { textStyle } = styles;
   return (
     <View style={styles.border}>
-      <View style={styles.picContainer}>
-        <Text style={styles.picture}> Picture 1 </Text>
-      </View>
-      <View style={styles.picContainer}>
-        <Text style={styles.picture}> Picture 2 </Text>
-      </View>
+      <Button onPress={() => console.log("button 1 pressed.")} style={styles.picContainer}>
+        <Image source={require('../images/trust/true/1.jpeg')} />
+      </Button>
+      <Button onPress={() => console.log("button 2 pressed.")} style={styles.picContainer}>
+        <Image source={require('../images/trust/false/1.jpeg')} />
+      </Button>
     </View>
   );
 };
