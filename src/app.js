@@ -23,7 +23,7 @@ class App  extends Component {
     return (
       <View style={styles.container}>
         <Languages />
-        <Value callback={this.parentCallback} look={styles.border}/>
+        <Value callback={this.parentCallback} />
         <Rule look={styles.border}/>
         <Pictures companyValue={this.state.companyValue} style={styles.pictures}/>
       </View>

@@ -35,7 +35,6 @@ const styles = {
   },
   langContainer: {
     flex: 2,
-    backgroundColor: '#F8F8F8',
     alignItems: 'center',
     elevation: 2,
     position: 'relative',
