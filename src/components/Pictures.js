@@ -3,13 +3,13 @@ import { Image, View } from 'react-native';
 import Button from './common/Button';
 
 const Pictures = () => {
-  const { textStyle } = styles;
+  const { border, picContainer} = styles;
   return (
-    <View style={styles.border}>
-      <Button onPress={() => console.log("button 1 pressed.")} style={styles.picContainer}>
+    <View style={border}>
+      <Button onPress={() => console.log("button 1 pressed.")} style={picContainer}>
         {getImageName(0, companyValue)}
       </Button>
-      <Button onPress={() => console.log("button 2 pressed.")} style={styles.picContainer}>
+      <Button onPress={() => console.log("button 2 pressed.")} style={picContainer}>
         {getImageName(1, companyValue)}
       </Button>
     </View>
@@ -17,11 +17,12 @@ const Pictures = () => {
 };
 
 function getImageName(flag, value) {
+  const { imageStyle } = styles;
   if(value == 'trust') {
     if(flag == 0) {
-      return <Image resizeMode='stretch' source={Images.trust.true}/>
+      return <Image style={imageStyle} source={Images.trust.true}/>
     } else {
-      return <Image resizeMode='stretch' source={Images.trust.false}/>
+      return <Image style={imageStyle} source={Images.trust.false}/>
     }
   } else if(value == 'accountability') {
     if(flag == 0) {
@@ -82,6 +83,11 @@ const styles = {
     shadowOpacity: 0.5,
     elevation: 2,
     position: 'relative',
+  },
+  imageStyle: {
+    width: null,
+    // height: null,
+    resizeMode: 'contain'
   }
 };
 
