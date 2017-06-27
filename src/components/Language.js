@@ -5,7 +5,7 @@ const Language = (props) => {
   const { textStyle } = styles;
   return (
     <View style={props.look}>
-      <Text style={textStyle}> Languages </Text>
+      <Text style={textStyle}> Languages Hi From Nesa</Text>
     </View>
   );
 };
