@@ -12,11 +12,9 @@ import Pictures from './components/Pictures';
 
 class App  extends Component {
 
-  state = null;
-
   constructor(props) {
     super(props);
-    state = {
+    this.state = {
       companyValue: 'accountability'
     };
   }
@@ -24,21 +22,22 @@ class App  extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Languages callback={parentCallback}/>
-        <Value look={styles.border}/>
+        <Languages />
+        <Value callback={this.parentCallback} look={styles.border}/>
         <Rule look={styles.border}/>
-        <Pictures companyValue={state.companyValue} style={styles.pictures}/>
+        <Pictures companyValue={this.state.companyValue} style={styles.pictures}/>
       </View>
     );
   }
-}
 
-function parentCallback(data) {
-  console.log("app state: " + state.companyValue);
-  console.log("received data: " + data);
-  this.setState({
-    companyValue: data
-  });
+  parentCallback = (data) => {
+    console.log("before app state: " + this.state.companyValue);
+    console.log("received data: " + data);
+    this.setState({
+      companyValue: data
+    });
+    console.log("after app state: " + this.state.companyValue);
+  }
 }
 
 const styles = StyleSheet.create({

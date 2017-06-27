@@ -3,7 +3,6 @@ import { Text, View } from 'react-native';
 import Button from './common/Button';
 
 const Language = (props) => {
-  console.log("props.callback in Languages:" + props.callback);
   const { textStyle } = styles;
   return (
     <View style={styles.border}>
@@ -11,12 +10,10 @@ const Language = (props) => {
         <Text style={textStyle}> Languages </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button style={{backgroundColor: 'powderblue'}} onPress={() => {
-            props.callback('trust');
-          }}>
+        <Button style={{backgroundColor: 'powderblue'}}>
            <Text style={textStyle}> EN </Text>
         </Button>
-        <Button style={{width: 50, height: 50, backgroundColor: 'powderblue'}}>
+        <Button style={{backgroundColor: 'powderblue'}}>
            <Text style={textStyle}> FR </Text>
         </Button>
         <Button style={{backgroundColor: 'powderblue'}}>

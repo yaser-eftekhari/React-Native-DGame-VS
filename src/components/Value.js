@@ -9,7 +9,11 @@ class Value extends Component {
     return (
             <Picker
               selectedValue={this.state.language}
-              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              onValueChange={(itemValue, itemIndex) => {
+                  this.props.callback(itemValue);
+                  this.setState({language: itemValue})
+                }
+              }>
               <Picker.Item label="Accountability" value="acc" />
               <Picker.Item label="Agility" value="ag" />
               <Picker.Item label="Innovation" value="in" />
