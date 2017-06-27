@@ -3,48 +3,43 @@ import { Image, View } from 'react-native';
 import Button from './common/Button';
 
 const Pictures = () => {
-  const { border, picContainer} = styles;
+  const { border } = styles;
   return (
     <View style={border}>
-      <Button onPress={() => console.log("button 1 pressed.")} style={picContainer}>
-        {getImageName(0, companyValue)}
-      </Button>
-      <Button onPress={() => console.log("button 2 pressed.")} style={picContainer}>
-        {getImageName(1, companyValue)}
-      </Button>
+      {getImageName(companyValue, true)}
+      {getImageName(companyValue, false)}
     </View>
   );
 };
 
-function getImageName(flag, value) {
-  const { imageStyle } = styles;
-  if(value == 'trust') {
-    if(flag == 0) {
-      return <Image style={imageStyle} source={Images.trust.true}/>
-    } else {
-      return <Image style={imageStyle} source={Images.trust.false}/>
-    }
-  } else if(value == 'accountability') {
-    if(flag == 0) {
-      return <Image source={Images.accountability.true}/>
-    } else {
-      return <Image source={Images.accountability.false}/>
-    }
-  } else if(value == 'agility') {
-    if(flag == 0) {
-      return <Image source={Images.agility.true}/>
-    } else {
-      return <Image source={Images.agility.false}/>
-    }
-  } else if(value == 'innovation') {
-    if(flag == 0) {
-      return <Image source={Images.innovation.true}/>
-    } else {
-      return <Image source={Images.innovation.false}/>
-    }
+function getImageName(value, force) {
+  const { imageStyle, picContainer } = styles;
+  if(force) {
+    previousSelection = Math.random() > 0.5 ? 0 : 1;
+  }
+
+  previousSelection = (previousSelection + 1) % 2;
+
+  if(previousSelection == 0) {
+    return (
+      <Button onPress={() => console.log(correctSelection)} style={picContainer}>
+        <Image style={imageStyle} source={Images[value].true}/>
+      </Button>
+    );
+  } else {
+    return (
+      <Button onPress={() => console.log(wrongSelection)} style={picContainer}>
+        <Image style={imageStyle} source={Images[value].false}/>
+      </Button>
+    );
   }
 }
-const companyValue = 'trust';
+
+var previousSelection = 0;
+const correctSelection = 'Pressed the correct button';
+const wrongSelection = 'Pressed the wrong button';
+
+const companyValue = 'accountability';
 const Images = {
   accountability: {
     true: require('../images/accountability/true/1.jpeg'),
@@ -86,7 +81,6 @@ const styles = {
   },
   imageStyle: {
     width: null,
-    // height: null,
     resizeMode: 'contain'
   }
 };
