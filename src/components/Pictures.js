@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import Button from './common/Button';
 
-const Pictures = () => {
-  const { border } = styles;
-  return (
-    <View style={border}>
-      {getImageName(companyValue, true)}
-      {getImageName(companyValue, false)}
-    </View>
-  );
-};
+class Pictures extends Component {
+  state = {companyValue: ''};
+
+  constructor(props) {
+    super(props);
+    console.log("constructor of Pictures called.");
+    console.log("parameter passed in is: " + props.companyValue);
+    this.state = {
+      companyValue: props.companyValue,
+    };
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     companyValue: nextProps.companyValue,
+  //   });
+  // }
+
+  render() {
+    console.log("inside render in Pictures, state is " + this.state.companyValue);
+    return (
+      <View style={styles.border}>
+        {getImageName(this.state.companyValue, true)}
+        {getImageName(this.state.companyValue, false)}
+      </View>
+    );
+  }
+}
 
 function getImageName(value, force) {
+  console.log("getImageName accessed " + value);
   const { imageStyle, picContainer } = styles;
   if(force) {
     previousSelection = Math.random() > 0.5 ? 0 : 1;
@@ -39,7 +59,6 @@ var previousSelection = 0;
 const correctSelection = 'Pressed the correct button';
 const wrongSelection = 'Pressed the wrong button';
 
-const companyValue = 'accountability';
 const Images = {
   accountability: {
     true: require('../images/accountability/true/1.jpeg'),
@@ -58,6 +77,7 @@ const Images = {
     false: require('../images/innovation/false/1.jpeg'),
   },
 };
+
 const styles = {
   border: {
     flex: 4,

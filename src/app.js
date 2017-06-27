@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,14 +10,36 @@ import Value from './components/Value';
 import Rule from './components/Rule';
 import Pictures from './components/Pictures';
 
-const App = () => (
-  <View style={styles.container}>
-    <Languages look={styles.border}/>
-    <Value look={styles.border}/>
-    <Rule look={styles.border}/>
-    <Pictures style={styles.pictures}/>
-  </View>
-);
+class App  extends Component {
+
+  state = null;
+
+  constructor(props) {
+    super(props);
+    state = {
+      companyValue: 'accountability'
+    };
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Languages callback={parentCallback}/>
+        <Value look={styles.border}/>
+        <Rule look={styles.border}/>
+        <Pictures companyValue={state.companyValue} style={styles.pictures}/>
+      </View>
+    );
+  }
+}
+
+function parentCallback(data) {
+  console.log("app state: " + state.companyValue);
+  console.log("received data: " + data);
+  this.setState({
+    companyValue: data
+  });
+}
 
 const styles = StyleSheet.create({
   container: {
