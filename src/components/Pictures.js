@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import Button from './common/Button';
+
 class Pictures extends Component {
   state = {companyValue: ''};
 
@@ -54,16 +55,19 @@ function getImageName(value, force) {
 
   previousSelection = (previousSelection + 1) % 2;
 
+  // Get random number either 1 or 2 (as we only have two pictures now)
+  var picIndex = '' + (Math.floor(Math.random() * 2) + 1);
+
   if(previousSelection == 0) {
     return (
       <Button onPress={() => clap.play()} style={picContainer}>
-        <Image style={imageStyle} source={Images[value].true}/>
+        <Image style={imageStyle} source={Images[value].true[picIndex]}/>
       </Button>
     );
   } else {
     return (
       <Button onPress={() => boo.play()} style={picContainer}>
-        <Image style={imageStyle} source={Images[value].false}/>
+        <Image style={imageStyle} source={Images[value].false[picIndex]}/>
       </Button>
     );
   }
@@ -73,20 +77,44 @@ var previousSelection = 0;
 
 const Images = {
   accountability: {
-    true: require('../images/accountability/true/1.jpeg'),
-    false: require('../images/accountability/false/1.jpeg'),
+    true: {
+      1: require('../images/accountability/true/1.jpeg'),
+      2: require('../images/accountability/true/2.jpeg'),
+    },
+    false: {
+      1: require('../images/accountability/false/1.jpeg'),
+      2: require('../images/accountability/false/2.jpeg'),
+    },
   },
   trust: {
-    true: require('../images/trust/true/1.jpeg'),
-    false: require('../images/trust/false/1.jpeg'),
+    true: {
+      1: require('../images/trust/true/1.jpeg'),
+      2: require('../images/trust/true/2.jpeg'),
+    },
+    false: {
+      1: require('../images/trust/false/1.jpeg'),
+      2: require('../images/trust/false/2.jpeg'),
+    },
   },
   agility: {
-    true: require('../images/agility/true/1.jpeg'),
-    false: require('../images/agility/false/1.jpeg'),
+    true: {
+      1: require('../images/agility/true/1.jpeg'),
+      2: require('../images/agility/true/2.jpeg'),
+    },
+    false: {
+      1: require('../images/agility/false/1.jpeg'),
+      2: require('../images/agility/false/2.jpeg'),
+    },
   },
   innovation: {
-    true: require('../images/innovation/true/1.jpeg'),
-    false: require('../images/innovation/false/1.jpeg'),
+    true: {
+      1: require('../images/innovation/true/1.jpeg'),
+      2: require('../images/innovation/true/2.jpeg'),
+    },
+    false: {
+      1: require('../images/innovation/false/1.jpeg'),
+      2: require('../images/innovation/false/2.jpeg'),
+    },
   },
 };
 
