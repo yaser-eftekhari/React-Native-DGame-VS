@@ -23,8 +23,8 @@ class App  extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Languages callback={this.languageCallback} />
         <Rule look={styles.border}/>
+        <Languages callback={this.languageCallback} />
         <Value callback={this.valueCallback} language={this.state.language}/>
         <Pictures companyValue={this.state.companyValue} style={styles.pictures}/>
       </View>
