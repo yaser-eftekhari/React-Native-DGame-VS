@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Image, View } from 'react-native';
 import Button from './common/Button';
-import clapSoubd from '../sounds/clap.mp3';
-import booSoubd from '../sounds/boo.mp3';
 class Pictures extends Component {
   state = {companyValue: ''};
 
@@ -35,20 +33,20 @@ class Pictures extends Component {
 function getImageName(value, force) {
   var Sound = require('react-native-sound');
   Sound.setCategory('Playback');
-  var clap = new Sound(clapSoubd, Sound.MAIN_BUNDLE, (error) => {
+  var clap = new Sound('clap.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
     }
   });
 
-  var boo = new Sound(booSoubd, Sound.MAIN_BUNDLE, (error) => {
+  var boo = new Sound('boo.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
     }
   });
-  console.log("getImageName accessed " + value);
+
   const { imageStyle, picContainer } = styles;
   if(force) {
     previousSelection = Math.random() > 0.5 ? 0 : 1;
@@ -72,8 +70,6 @@ function getImageName(value, force) {
 }
 
 var previousSelection = 0;
-const correctSelection = 'Pressed the correct button';
-const wrongSelection = 'Pressed the wrong button';
 
 const Images = {
   accountability: {
