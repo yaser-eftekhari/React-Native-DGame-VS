@@ -24,52 +24,52 @@ class Pictures extends Component {
     console.log("inside render in Pictures, state is " + this.props.companyValue);
     return (
       <View style={styles.border}>
-        {getImageName(this.state.companyValue, true)}
-        {getImageName(this.state.companyValue, false)}
+        {this.getImageName(this.state.companyValue, true)}
+        {this.getImageName(this.state.companyValue, false)}
       </View>
     );
   }
-}
 
-function getImageName(value, force) {
-  var Sound = require('react-native-sound');
-  Sound.setCategory('Playback');
-  var clap = new Sound('clap.mp3', Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-      console.log('failed to load the sound', error);
-      return;
+  getImageName(value, force) {
+    var Sound = require('react-native-sound');
+    Sound.setCategory('Playback');
+    var clap = new Sound('clap.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('failed to load the sound', error);
+        return;
+      }
+    });
+
+    var boo = new Sound('boo.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('failed to load the sound', error);
+        return;
+      }
+    });
+
+    const { imageStyle, picContainer } = styles;
+    if(force) {
+      previousSelection = Math.random() > 0.5 ? 0 : 1;
     }
-  });
 
-  var boo = new Sound('boo.mp3', Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-      console.log('failed to load the sound', error);
-      return;
+    previousSelection = (previousSelection + 1) % 2;
+
+    // Get random number either 1 or 2 (as we only have two pictures now)
+    var picIndex = '' + (Math.floor(Math.random() * 2) + 1);
+
+    if(previousSelection == 0) {
+      return (
+        <Button onPress={() => {clap.play(); this.forceUpdate();}} style={picContainer}>
+          <Image style={imageStyle} source={Images[value].true[picIndex]}/>
+        </Button>
+      );
+    } else {
+      return (
+        <Button onPress={() => {boo.play(); this.forceUpdate();}} style={picContainer}>
+          <Image style={imageStyle} source={Images[value].false[picIndex]}/>
+        </Button>
+      );
     }
-  });
-
-  const { imageStyle, picContainer } = styles;
-  if(force) {
-    previousSelection = Math.random() > 0.5 ? 0 : 1;
-  }
-
-  previousSelection = (previousSelection + 1) % 2;
-
-  // Get random number either 1 or 2 (as we only have two pictures now)
-  var picIndex = '' + (Math.floor(Math.random() * 2) + 1);
-
-  if(previousSelection == 0) {
-    return (
-      <Button onPress={() => clap.play()} style={picContainer}>
-        <Image style={imageStyle} source={Images[value].true[picIndex]}/>
-      </Button>
-    );
-  } else {
-    return (
-      <Button onPress={() => boo.play()} style={picContainer}>
-        <Image style={imageStyle} source={Images[value].false[picIndex]}/>
-      </Button>
-    );
   }
 }
 
