@@ -10,13 +10,13 @@ const Language = (props) => {
         <Text style={styles.textStyle2}> Languages </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button style={{backgroundColor: 'powderblue'}}>
+        <Button style={{backgroundColor: 'powderblue'}} onPress={() => props.callback('EN')}>
            <Text style={textStyle}> EN </Text>
         </Button>
-        <Button style={{backgroundColor: 'powderblue'}}>
+        <Button style={{backgroundColor: 'powderblue'}} onPress={() => props.callback('FR')}>
            <Text style={textStyle}> FR </Text>
         </Button>
-        <Button style={{backgroundColor: 'powderblue'}}>
+        <Button style={{backgroundColor: 'powderblue'}} onPress={() => props.callback('NL')}>
            <Text style={textStyle}> NL </Text>
         </Button>
       </View>

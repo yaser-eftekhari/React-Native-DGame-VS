@@ -7,8 +7,6 @@ class Pictures extends Component {
 
   constructor(props) {
     super(props);
-    console.log("constructor of Pictures called.");
-    console.log("parameter passed in is: " + props.companyValue);
     this.state = {
       companyValue: props.companyValue,
     };
@@ -21,7 +19,6 @@ class Pictures extends Component {
   }
 
   render() {
-    console.log("inside render in Pictures, state is " + this.props.companyValue);
     return (
       <View style={styles.border}>
         {this.getImageName(this.state.companyValue, true)}

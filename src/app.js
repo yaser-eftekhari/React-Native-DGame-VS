@@ -15,24 +15,34 @@ class App  extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      companyValue: 'accountability'
+      companyValue: 'accountability',
+      language: 'EN',
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Languages />
-        <Value callback={this.parentCallback} />
+        <Languages callback={this.languageCallback} />
         <Rule look={styles.border}/>
+        <Value callback={this.valueCallback} language={this.state.language}/>
         <Pictures companyValue={this.state.companyValue} style={styles.pictures}/>
       </View>
     );
   }
 
-  parentCallback = (data) => {
+  valueCallback = (data) => {
     this.state = {
-      companyValue: data
+      companyValue: data,
+      language: this.state.language
+    };
+    this.forceUpdate();
+  }
+
+  languageCallback = (data) => {
+    this.state = {
+      companyValue: this.state.companyValue,
+      language: data
     };
     this.forceUpdate();
   }
