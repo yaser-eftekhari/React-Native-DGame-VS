@@ -11,14 +11,10 @@ import Rule from './components/Rule';
 import Pictures from './components/Pictures';
 
 class App  extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      companyValue: 'accountability',
-      language: 'EN',
-    };
-  }
+  state = {
+    companyValue: 'accountability',
+    language: 'EN',
+  };
 
   render() {
     return (
@@ -32,19 +28,13 @@ class App  extends Component {
   }
 
   valueCallback = (data) => {
-    this.state = {
-      companyValue: data,
-      language: this.state.language
-    };
-    this.forceUpdate();
+    this.setState({ companyValue: data });
+    // this.forceUpdate();
   }
 
   languageCallback = (data) => {
-    this.state = {
-      companyValue: this.state.companyValue,
-      language: data
-    };
-    this.forceUpdate();
+    this.setState({ language: data });
+    // this.forceUpdate();
   }
 }
 

@@ -25,7 +25,7 @@ class Value extends Component {
 const items = {
   ac: {
     EN: "Accountability",
-    FR: "responsabilité",
+    FR: "Responsabilité",
     NL: "Verantwoording"
   },
   ag: {
